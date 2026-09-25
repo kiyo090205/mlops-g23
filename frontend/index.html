@@ -1,18 +1,602 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NovaVision Lab</title>
-  <style>body{font-family:system-ui;margin:0;background:#eef6ff;color:#153c5d}main{max-width:720px;margin:72px auto;padding:32px;background:white;border-radius:18px}.tag{color:#1478b8;font-weight:700}</style>
-</head>
-<body>
-  <main>
-    <p class="tag">MLOps Lab · Frontend</p>
-    <h1>Halo dari GitHub Pages!</h1>
-    <p>Halaman ini dikirim otomatis oleh GitHub Actions.</p>
-    <p>Perubahan kode → commit → push → deploy.</p>
-  </main>
-</body>
-</html>
+<!DOCTYPE html>
 
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOTONA — Boutique Cyber Security Company</title>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            cyber: {
+              black: '#060807',
+              base: '#080B09',
+              card: '#0D120F',
+              elevated: '#111713',
+              border: '#19231D',
+              borderHover: '#26382D',
+              neon: '#00FF66',
+              emerald: '#10B981',
+              muted: '#7A8C80',
+              textLight: '#E3EDE6',
+            }
+          },
+          boxShadow: {
+            'neon-sm': '0 0 12px rgba(0, 255, 102, 0.25)',
+            'neon-md': '0 0 25px rgba(0, 255, 102, 0.35)',
+            'neon-lg': '0 0 50px rgba(0, 255, 102, 0.25)',
+            'glow-inner': 'inset 0 1px 1px 0 rgba(0, 255, 102, 0.2)',
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
+            'float-subtle': 'floatSubtle 6s ease-in-out infinite',
+            'scanline': 'scanline 8s linear infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.9', transform: 'scale(1)' },
+              '50%': { opacity: '0.4', transform: 'scale(0.96)' },
+            },
+            floatSubtle: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+            scanline: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(1000%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom CSS Styling -->
+<style data-purpose="ambient-backgrounds">
+    body {
+      background-color: #070908;
+      color: #E3EDE6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient cyber radial spotlight & subtle wire grid */
+    .cyber-mesh {
+      background-image: 
+        radial-gradient(ellipse 65% 55% at 50% -10%, rgba(0, 255, 102, 0.12), transparent 70%),
+        radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.06), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Peripheral curved CRT lens vignette lines */
+    .crt-vignette {
+      box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Glassmorphism navigation and cards */
+    .glass-panel {
+      background: rgba(13, 18, 15, 0.68);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    
+    .glass-pill {
+      background: rgba(16, 23, 19, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 255, 102, 0.14);
+    }
+
+    /* Glow pulse ring */
+    .radar-pulse::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: #00FF66;
+      animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      z-index: -1;
+    }
+
+    @keyframes radarPing {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+  </style>
+<style data-purpose="decorations">
+    /* Subtle horizontal curvature lines from reference visual */
+    .arc-lines {
+      position: absolute;
+      width: 120%;
+      left: -10%;
+      height: 380px;
+      pointer-events: none;
+      opacity: 0.22;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 38px,
+        rgba(0, 255, 102, 0.18) 39px,
+        transparent 40px
+      );
+      mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 20%, transparent 80%);
+    }
+  </style>
+<!-- END: Custom CSS Styling -->
+</head>
+<body class="cyber-mesh min-h-screen selection:bg-cyber-neon selection:text-black font-sans relative antialiased">
+<!-- CRT Edge Vignette Layer -->
+<div class="fixed inset-0 crt-vignette pointer-events-none z-40"></div>
+<!-- Ambient background glow points -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-cyber-neon/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="fixed top-[45%] left-1/4 w-[360px] h-[240px] bg-emerald-600/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<!-- BEGIN: TopHeader -->
+<header class="w-full max-w-7xl mx-auto px-6 pt-6 pb-4 flex items-center justify-between relative z-30" data-purpose="site-header">
+<!-- DOTONA Logo -->
+<a aria-label="DOTONA Home" class="flex items-center gap-3 group focus:outline-none" href="#hero">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<!-- Geometric cyber diamond knot -->
+<svg class="w-7 h-7 text-cyber-neon group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 32 32">
+<polygon class="opacity-70 stroke-cyber-neon" points="6,16 16,6 26,16 16,26"></polygon>
+<path class="text-cyber-neon fill-cyber-neon/30" d="M12 16L16 12L20 16L16 20Z" fill="currentColor"></path>
+<line x1="4" x2="8" y1="16" y2="16"></line>
+<line x1="24" x2="28" y1="16" y2="16"></line>
+</svg>
+</div>
+<div class="flex items-center tracking-wider font-extrabold text-xl font-sans text-white">
+<span>DOT</span><span class="text-cyber-neon">ONA</span>
+</div>
+</a>
+<!-- Center System Status Pill -->
+<div class="hidden md:flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-cyber-card/80 border border-cyber-border text-xs font-mono text-cyber-muted">
+<span class="w-2 h-2 rounded-full bg-cyber-neon shadow-neon-sm animate-pulse"></span>
+<span class="text-gray-300">DEFENSE GRID ACTIVE</span>
+<span class="text-cyber-border">|</span>
+<span class="text-cyber-emerald">99.98% RESILIENCY</span>
+</div>
+<!-- Right Header Actions (Contact Us CTA with neon orb) -->
+<div class="flex items-center gap-4">
+<a class="group flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-cyber-card hover:bg-cyber-elevated border border-cyber-border hover:border-cyber-neon/50 transition-all duration-300 shadow-sm hover:shadow-neon-sm" data-purpose="contact-header-btn" href="#contact">
+<span class="text-xs font-medium text-gray-200 group-hover:text-white tracking-wide">Contact us</span>
+<span class="relative w-6 h-6 rounded-full bg-cyber-neon flex items-center justify-center radar-pulse">
+<svg class="w-3.5 h-3.5 text-cyber-black transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</a>
+</div>
+</header>
+<!-- END: TopHeader -->
+<main class="relative z-20">
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-16 pb-20 md:pt-24 md:pb-28 text-center px-4 overflow-hidden" data-purpose="hero-section" id="hero">
+<!-- Subtle Arc curve lines in background -->
+<div class="arc-lines top-12"></div>
+<div class="max-w-4xl mx-auto relative z-10">
+<!-- Boutique Badge Tag -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyber-neon/5 border border-cyber-neon/20 text-cyber-neon text-xs font-mono mb-8 uppercase tracking-widest">
+<span class="text-cyber-neon font-bold">●</span> Elite Threat Intelligence &amp; Defense
+        </div>
+<!-- Main Headline with EKG Wave Symbol from Reference -->
+<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.12] mb-7">
+          We are 
+          <span class="inline-flex items-center mx-2 align-middle transform -translate-y-1">
+<svg class="w-10 sm:w-14 md:w-16 h-8 text-cyber-neon animate-pulse-glow" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 72 24">
+<path d="M2 12h14l4-7 6 15 5-11 4 7 4-4h15"></path>
+<circle class="fill-cyber-neon" cx="22" cy="5" r="2.5"></circle>
+<circle class="fill-cyber-neon" cx="28" cy="20" r="2"></circle>
+<circle class="fill-cyber-neon" cx="37" cy="9" r="2"></circle>
+</svg>
+</span>
+          a boutique<br class="hidden sm:inline"/> cyber security company
+        </h1>
+<!-- Subheadline text -->
+<p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-cyber-muted font-normal leading-relaxed mb-10">
+          At DOTONA, our expertise extends across diverse industries and sectors, including manufacturing, finance, healthcare, government, and more. Our team's expertise is backed by the highest standards of cybersecurity certifications.
+        </p>
+<!-- Hero Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="px-7 py-3 rounded-full bg-cyber-neon text-cyber-black font-semibold text-sm hover:bg-[#1aff75] hover:shadow-neon-md transition-all duration-300 transform hover:-translate-y-0.5" href="#services">
+            Explore Services
+          </a>
+<a class="px-6 py-3 rounded-full bg-cyber-card/90 hover:bg-cyber-elevated text-gray-200 border border-cyber-border hover:border-cyber-neon/40 font-medium text-sm transition-all duration-300" href="#framework">
+            5-Stage Framework
+          </a>
+</div>
+</div>
+<!-- Trust Metrics Bar -->
+<div class="mt-16 pt-10 border-t border-white/[0.05] max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+<div>
+<div class="text-2xl font-bold font-mono text-white tracking-tight">0-Day</div>
+<div class="text-xs text-cyber-muted mt-1 uppercase font-mono tracking-wider">Proactive Research</div>
+</div>
+<div>
+<div class="text-2xl font-bold font-mono text-cyber-neon tracking-tight">100%</div>
+<div class="text-xs text-cyber-muted mt-1 uppercase font-mono tracking-wider">Tailored Protocols</div>
+</div>
+<div>
+<div class="text-2xl font-bold font-mono text-white tracking-tight">&lt; 15 min</div>
+<div class="text-xs text-cyber-muted mt-1 uppercase font-mono tracking-wider">Incident Triage</div>
+</div>
+<div>
+<div class="text-2xl font-bold font-mono text-cyber-emerald tracking-tight">ISO/CREST</div>
+<div class="text-xs text-cyber-muted mt-1 uppercase font-mono tracking-wider">Aligned Standards</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ValuePillarsSection -->
+<section class="py-12 px-6 max-w-6xl mx-auto relative" data-purpose="three-value-pillars">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+<!-- Pillar 1: We have experience -->
+<div class="glass-panel p-7 rounded-2xl border border-cyber-border/70 hover:border-cyber-neon/40 transition-all duration-300 group hover:-translate-y-1">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-mono text-cyber-neon/70 group-hover:text-cyber-neon tracking-widest">[ 01 ]</span>
+<div class="w-8 h-8 rounded-lg bg-cyber-elevated border border-cyber-border flex items-center justify-center text-cyber-neon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-white mb-2.5 tracking-tight group-hover:text-cyber-neon transition-colors">
+            We have experience
+          </h3>
+<p class="text-xs sm:text-sm text-cyber-muted leading-relaxed">
+            Driven by years of battle-testing, our team has been instrumental in safeguarding businesses from complex data breaches, ransomware attacks, and emerging digital vulnerabilities.
+          </p>
+</div>
+<!-- Pillar 2: We offer customized solutions -->
+<div class="glass-panel p-7 rounded-2xl border border-cyber-border/70 hover:border-cyber-neon/40 transition-all duration-300 group hover:-translate-y-1">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-mono text-cyber-neon/70 group-hover:text-cyber-neon tracking-widest">[ 02 ]</span>
+<div class="w-8 h-8 rounded-lg bg-cyber-elevated border border-cyber-border flex items-center justify-center text-cyber-neon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-white mb-2.5 tracking-tight group-hover:text-cyber-neon transition-colors">
+            We offer customized solutions
+          </h3>
+<p class="text-xs sm:text-sm text-cyber-muted leading-relaxed">
+            Recognizing that each business confronts unique threat surfaces, we offer tailored cybersecurity solutions precision-built for your specific infrastructure, legacy stacks, and scaling cloud environments.
+          </p>
+</div>
+<!-- Pillar 3: We stay up-to-date -->
+<div class="glass-panel p-7 rounded-2xl border border-cyber-border/70 hover:border-cyber-neon/40 transition-all duration-300 group hover:-translate-y-1">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-mono text-cyber-neon/70 group-hover:text-cyber-neon tracking-widest">[ 03 ]</span>
+<div class="w-8 h-8 rounded-lg bg-cyber-elevated border border-cyber-border flex items-center justify-center text-cyber-neon">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-white mb-2.5 tracking-tight group-hover:text-cyber-neon transition-colors">
+            We stay up-to-date
+          </h3>
+<p class="text-xs sm:text-sm text-cyber-muted leading-relaxed">
+            In this dynamic world of adversary evolution, our focus is on staying ahead of the curve with continuous threat research, AI-vector analysis, and offensive telemetry updates.
+          </p>
+</div>
+</div>
+</section>
+<!-- END: ValuePillarsSection -->
+<!-- BEGIN: SecurityFrameworkSection -->
+<section class="py-20 px-6 max-w-6xl mx-auto" data-purpose="custom-solution-framework" id="framework">
+<div class="text-center mb-14">
+<p class="text-xs font-mono text-cyber-neon uppercase tracking-widest mb-2">[ Methodology ]</p>
+<h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">5-Stage Custom Security Framework</h2>
+<p class="text-cyber-muted text-sm sm:text-base max-w-xl mx-auto mt-3">
+          A surgical, transparent lifecycle designed to de-risk assets from perimeter to core.
+        </p>
+</div>
+<!-- Interactive 5-Step Pipeline -->
+<div class="relative">
+<!-- Connecting Line for desktop -->
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyber-neon/30 to-transparent -translate-y-6"></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 relative z-10">
+<!-- Step 1 -->
+<div class="glass-panel p-5 rounded-xl border border-cyber-border hover:border-cyber-neon/50 transition-all text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-cyber-elevated border border-cyber-neon/40 text-cyber-neon flex items-center justify-center font-mono font-bold text-sm mb-3 shadow-neon-sm">
+              01
+            </div>
+<h4 class="text-white font-semibold text-sm mb-1.5">Understand</h4>
+<p class="text-xs text-cyber-muted leading-relaxed">
+              Business model context, critical data topology &amp; threat actor profiles.
+            </p>
+</div>
+<!-- Step 2 -->
+<div class="glass-panel p-5 rounded-xl border border-cyber-border hover:border-cyber-neon/50 transition-all text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-cyber-elevated border border-cyber-neon/40 text-cyber-neon flex items-center justify-center font-mono font-bold text-sm mb-3 shadow-neon-sm">
+              02
+            </div>
+<h4 class="text-white font-semibold text-sm mb-1.5">Assess</h4>
+<p class="text-xs text-cyber-muted leading-relaxed">
+              Penetration test perimeter, audit source code, inspect configuration drifts.
+            </p>
+</div>
+<!-- Step 3 -->
+<div class="glass-panel p-5 rounded-xl border border-cyber-border hover:border-cyber-neon/50 transition-all text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-cyber-elevated border border-cyber-neon/40 text-cyber-neon flex items-center justify-center font-mono font-bold text-sm mb-3 shadow-neon-sm">
+              03
+            </div>
+<h4 class="text-white font-semibold text-sm mb-1.5">Design</h4>
+<p class="text-xs text-cyber-muted leading-relaxed">
+              Architect defense-in-depth, zero-trust matrices and compliance roadmap.
+            </p>
+</div>
+<!-- Step 4 -->
+<div class="glass-panel p-5 rounded-xl border border-cyber-border hover:border-cyber-neon/50 transition-all text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-cyber-elevated border border-cyber-neon/40 text-cyber-neon flex items-center justify-center font-mono font-bold text-sm mb-3 shadow-neon-sm">
+              04
+            </div>
+<h4 class="text-white font-semibold text-sm mb-1.5">Implement</h4>
+<p class="text-xs text-cyber-muted leading-relaxed">
+              Harden codebases, deploy runtime policies, and conduct team simulation drills.
+            </p>
+</div>
+<!-- Step 5 -->
+<div class="glass-panel p-5 rounded-xl border border-cyber-border hover:border-cyber-neon/50 transition-all text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-cyber-elevated border border-cyber-neon/40 text-cyber-neon flex items-center justify-center font-mono font-bold text-sm mb-3 shadow-neon-sm">
+              05
+            </div>
+<h4 class="text-white font-semibold text-sm mb-1.5">Monitor</h4>
+<p class="text-xs text-cyber-muted leading-relaxed">
+              24/7 telemetry surveillance, SIEM alerts, and real-time automated containment.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SecurityFrameworkSection -->
+<!-- BEGIN: CoreServicesSection -->
+<section class="py-16 px-6 max-w-6xl mx-auto" data-purpose="services-showcase" id="services">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<span class="text-xs font-mono text-cyber-neon uppercase tracking-widest">[ Capabilities ]</span>
+<h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-1">Specialized Boutiqued Services</h2>
+</div>
+<p class="text-xs sm:text-sm text-cyber-muted max-w-md mt-3 md:mt-0">
+          We don't offer generic checklists. Every security assessment is driven by certified offensive specialists who mimic actual nation-state threat vectors.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service Card 1 -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">OFFENSIVE</span>
+<span class="text-xs text-cyber-muted font-mono">01/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Penetration Testing</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Rigorous simulated attacks against web apps, APIs, cloud environments, and internal networks to locate exploitable paths before malicious adversaries do.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>Red Team Exercises • Black Box</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+<!-- Service Card 2 -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">DEFENSIVE</span>
+<span class="text-xs text-cyber-muted font-mono">02/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Vulnerability Assessment</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Comprehensive continuous scanning, configuration audits, and risk triage that flags misconfigurations and patches CVEs according to business criticality.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>CVE Prioritization • Automated CI/CD</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+<!-- Service Card 3 -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">CLOUD &amp; APP</span>
+<span class="text-xs text-cyber-muted font-mono">03/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Cloud &amp; AppSec Hardening</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Tailored architecture reviews for AWS, Azure, and GCP workloads. Secure code review (SAST/DAST) ensuring DevSecOps maturity.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>Zero-Trust IAM • Container Security</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+<!-- Service Card 4 -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">STRATEGY</span>
+<span class="text-xs text-cyber-muted font-mono">04/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Security Consulting &amp; vCISO</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Executive-level guidance to align corporate goals with compliance mandates (ISO 27001, SOC2, HIPAA, GDPR) without slowing velocity.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>Audit Preparation • Governance</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+<!-- Service Card 5 -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">RESPONSE</span>
+<span class="text-xs text-cyber-muted font-mono">05/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Incident Response &amp; Forensics</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Immediate threat containment, forensic log extraction, eradication of persistent backdoors, and post-mortem legal reporting.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>24/7 Emergency Dispatch • DFIR</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+<!-- Service Card 6 (Boutique Specialization) -->
+<article class="glass-panel p-6 rounded-2xl border border-cyber-border hover:border-cyber-neon/40 transition-all duration-300 group flex flex-col justify-between" data-purpose="service-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-cyber-neon/10 text-cyber-neon text-[10px] font-mono tracking-wider">INTEL</span>
+<span class="text-xs text-cyber-muted font-mono">06/06</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-cyber-neon transition-colors mb-2">Adversary Threat Intel</h3>
+<p class="text-xs text-cyber-muted leading-relaxed mb-6">
+              Dark web brand monitoring, credential leak alerts, and adversary reconnaissance focused specifically on your organization's digital footprint.
+            </p>
+</div>
+<div class="pt-4 border-t border-cyber-border/60 flex items-center justify-between text-xs font-medium text-cyber-emerald">
+<span>Darknet Scrapes • Brand Protection</span>
+<span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</article>
+</div>
+</section>
+<!-- END: CoreServicesSection -->
+<!-- BEGIN: ContactSection -->
+<section class="py-20 px-6 max-w-4xl mx-auto" data-purpose="inquiry-form-section" id="contact">
+<div class="glass-panel p-8 sm:p-12 rounded-3xl border border-cyber-border relative overflow-hidden">
+<!-- Subtle corner neon accent glow -->
+<div class="absolute -top-16 -right-16 w-44 h-44 bg-cyber-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="text-center mb-10">
+<span class="text-xs font-mono text-cyber-neon uppercase tracking-widest">[ Initiate Dialogue ]</span>
+<h2 class="text-3xl font-bold text-white mt-1">Schedule a Security Assessment</h2>
+<p class="text-cyber-muted text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+            Discuss your threat surface with our senior security consultants under strict NDA confidentiality.
+          </p>
+</div>
+<form class="space-y-4 max-w-xl mx-auto" id="security-inquiry-form" onsubmit="event.preventDefault(); alert('Security inquiry logged. An encrypted key confirmation has been dispatched.');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-mono text-cyber-muted mb-1">YOUR NAME</label>
+<input class="w-full bg-cyber-black/70 border border-cyber-border rounded-lg px-3.5 py-2.5 text-sm text-white focus:border-cyber-neon focus:ring-1 focus:ring-cyber-neon transition outline-none" placeholder="Alex Mercer" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-mono text-cyber-muted mb-1">WORK EMAIL</label>
+<input class="w-full bg-cyber-black/70 border border-cyber-border rounded-lg px-3.5 py-2.5 text-sm text-white focus:border-cyber-neon focus:ring-1 focus:ring-cyber-neon transition outline-none" placeholder="alex@enterprise.com" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-mono text-cyber-muted mb-1">ORGANIZATION</label>
+<input class="w-full bg-cyber-black/70 border border-cyber-border rounded-lg px-3.5 py-2.5 text-sm text-white focus:border-cyber-neon focus:ring-1 focus:ring-cyber-neon transition outline-none" placeholder="Global Logistics Corp" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-mono text-cyber-muted mb-1">DESIRED SERVICE</label>
+<select class="w-full bg-cyber-black/70 border border-cyber-border rounded-lg px-3.5 py-2.5 text-sm text-white focus:border-cyber-neon focus:ring-1 focus:ring-cyber-neon transition outline-none">
+<option value="pentest">Penetration Testing</option>
+<option value="audit">Security Audit &amp; Compliance</option>
+<option value="incident">Incident Response Triage</option>
+<option value="vciso">Virtual CISO Advisory</option>
+<option value="custom">Custom Boutique Defense</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-xs font-mono text-cyber-muted mb-1">PROJECT SCOPE &amp; OBJECTIVES</label>
+<textarea class="w-full bg-cyber-black/70 border border-cyber-border rounded-lg px-3.5 py-2.5 text-sm text-white focus:border-cyber-neon focus:ring-1 focus:ring-cyber-neon transition outline-none" placeholder="Specify timeline, digital assets involved, or current security concerns..." rows="3"></textarea>
+</div>
+<button class="w-full py-3 rounded-xl bg-cyber-neon text-cyber-black font-semibold text-sm hover:bg-[#1aff75] hover:shadow-neon-md transition-all duration-300 mt-2" type="submit">
+            Submit Encrypted Inquiry
+          </button>
+</form>
+<div class="text-center mt-6">
+<span class="text-[11px] font-mono text-cyber-muted">
+            🛡️ 256-bit Encrypted Transmission • PGP keys available on request
+          </span>
+</div>
+</div>
+</section>
+<!-- END: ContactSection -->
+</main>
+<!-- BEGIN: BottomFloatingNavigation -->
+<!-- Direct recreation of the floating bottom pill menu from the reference UI -->
+<aside class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-fit" data-purpose="floating-nav-container">
+<nav aria-label="Quick Navigation" class="glass-pill px-3 py-2 rounded-full flex items-center gap-1.5 shadow-2xl border border-white/10">
+<!-- Home (Active item) -->
+<a class="px-4 py-1.5 rounded-full text-xs font-medium text-white hover:text-white transition-all bg-cyber-elevated/90 border border-white/15 shadow-sm" data-nav-item="home" href="#hero">
+        Home
+      </a>
+<!-- Services -->
+<a class="px-3.5 py-1.5 rounded-full text-xs font-medium text-cyber-muted hover:text-white hover:bg-white/5 transition-all flex items-center gap-1" data-nav-item="services" href="#services">
+<span>Services</span>
+<svg class="w-3 h-3 text-cyber-neon opacity-75" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+<!-- Framework / Solutions -->
+<a class="px-3.5 py-1.5 rounded-full text-xs font-medium text-cyber-muted hover:text-white hover:bg-white/5 transition-all" data-nav-item="solutions" href="#framework">
+        Framework
+      </a>
+<!-- Contact -->
+<a class="px-3.5 py-1.5 rounded-full text-xs font-medium text-cyber-muted hover:text-white hover:bg-white/5 transition-all" data-nav-item="contact" href="#contact">
+        Contact us
+      </a>
+</nav>
+</aside>
+<!-- END: BottomFloatingNavigation -->
+<!-- BEGIN: MainFooter -->
+<footer class="border-t border-cyber-border/40 py-10 px-6 max-w-7xl mx-auto text-xs text-cyber-muted flex flex-col sm:flex-row items-center justify-between gap-4 pb-24">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-cyber-neon"></span>
+<span class="font-mono text-gray-300">DOTONA CYBERSECURITY INC.</span>
+<span>© <span id="current-year"></span> All rights reserved.</span>
+</div>
+<div class="flex items-center gap-6 font-mono text-[11px]">
+<a class="hover:text-cyber-neon transition-colors" href="#">PGP KEY</a>
+<a class="hover:text-cyber-neon transition-colors" href="#">VULNERABILITY DISCLOSURE</a>
+<a class="hover:text-cyber-neon transition-colors" href="#">PRIVACY POLICY</a>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="dynamic-year">
+    // Dynamically insert current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+<script data-purpose="nav-interaction">
+    // Smooth scroll and active pill highlighter
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>
